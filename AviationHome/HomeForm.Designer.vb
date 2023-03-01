@@ -25,10 +25,10 @@ Partial Class HomeForm
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(HomeForm))
         Me.dgvMain = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.noo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fli = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lines = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -93,7 +93,7 @@ Partial Class HomeForm
         '
         Me.dgvMain.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark
         Me.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvMain.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column8, Me.Column9})
+        Me.dgvMain.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.noo, Me.fli, Me.Column4, Me.lines, Me.Column6, Me.Column7, Me.Column8, Me.Column9})
         Me.dgvMain.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvMain.GridColor = System.Drawing.SystemColors.ControlLight
         Me.dgvMain.Location = New System.Drawing.Point(5, 5)
@@ -107,26 +107,26 @@ Partial Class HomeForm
         Me.Column1.HeaderText = "BAY NO"
         Me.Column1.Name = "Column1"
         '
-        'Column2
+        'noo
         '
-        Me.Column2.HeaderText = "NO"
-        Me.Column2.Name = "Column2"
+        Me.noo.HeaderText = "NO"
+        Me.noo.Name = "noo"
         '
-        'Column3
+        'fli
         '
-        Me.Column3.HeaderText = "FLIGHT"
-        Me.Column3.Name = "Column3"
-        Me.Column3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.fli.HeaderText = "FLIGHT"
+        Me.fli.Name = "fli"
+        Me.fli.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
         'Column4
         '
         Me.Column4.HeaderText = "ETA"
         Me.Column4.Name = "Column4"
         '
-        'Column5
+        'lines
         '
-        Me.Column5.HeaderText = "AIRLINES"
-        Me.Column5.Name = "Column5"
+        Me.lines.HeaderText = "AIRLINES"
+        Me.lines.Name = "lines"
         '
         'Column6
         '
@@ -147,6 +147,7 @@ Partial Class HomeForm
         '
         Me.Column9.HeaderText = "REMARKS"
         Me.Column9.Name = "Column9"
+        Me.Column9.Width = 200
         '
         'cbShiftTime
         '
@@ -707,10 +708,10 @@ Partial Class HomeForm
     Friend WithEvents FLIGHT As DataGridViewTextBoxColumn
     Friend WithEvents dgvMain As DataGridView
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents noo As DataGridViewTextBoxColumn
+    Friend WithEvents fli As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As DataGridViewTextBoxColumn
+    Friend WithEvents lines As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column8 As DataGridViewTextBoxColumn
