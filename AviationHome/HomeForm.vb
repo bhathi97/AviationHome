@@ -141,19 +141,37 @@ Public Class HomeForm
     Private Sub btnCMAddToTable_Click(sender As Object, e As EventArgs) Handles btnCMAddToTable.Click
 
         Try
-            ' Loop through the items in the ListBox
-            For i As Integer = 0 To lvCrewman.Items.Count - 1
-                ' Check for the first empty row in the "crewman" column of the DataGridView
-                Dim rowIndex As Integer = -1
-                For j As Integer = 0 To dgvMain.Rows.Count - 1
-                    If String.IsNullOrEmpty(dgvMain.Rows(j).Cells("Column8").Value) Then
-                        rowIndex = j
-                        Exit For
+
+            '--------------
+            Dim itemCount As Integer = lvCrewman.Items.Count 'listview column count
+            Dim flag As Integer = 0
+
+            'loop thruogh the table rows
+            If itemCount <> 1 Then
+
+                For i As Integer = 0 To dgvMain.Rows.Count - 1
+                    If flag < itemCount Then
+
+                        dgvMain.Rows(i).Cells("Column8").Value = lvCrewman.Items(flag).ToString()
+                        flag += 1
+                        If flag = itemCount Then flag = 0 ' reset flag if it reaches the end of the ListView
+
                     End If
                 Next
 
-                dgvMain.Rows(rowIndex).Cells("Column8").Value = lvCrewman.Items(i).ToString()
-            Next
+                'loop thruogh the table rows
+
+                'if there is only one item 
+
+            ElseIf itemCount = 1 Then
+
+                For i As Integer = 0 To dgvMain.RowCount - 1
+
+                    dgvMain.Rows(i).Cells("Column8").Value = lvCrewman.Items(0).ToString()
+                Next
+
+            End If
+
 
         Catch ex As Exception
 
@@ -168,20 +186,58 @@ Public Class HomeForm
     Private Sub btnRICAddToTable_Click(sender As Object, e As EventArgs) Handles btnRICAddToTable.Click
 
 
-        ' Loop through the items in the ListBox
-        For i As Integer = 0 To lvRic.Items.Count - 1
-            ' Check for the first empty row in the "ric" column of the DataGridView
-            Dim rowIndex As Integer = -1
-            For j As Integer = 0 To dgvMain.Rows.Count - 1
-                If String.IsNullOrEmpty(dgvMain.Rows(j).Cells("Column6").Value) Then
-                    rowIndex = j
-                    Exit For
-                End If
-            Next
 
-            ' Set the value of the "ric" column in the first empty row (or new row)
-            dgvMain.Rows(rowIndex).Cells("Column6").Value = lvRic.Items(i).ToString()
-        Next
+
+
+        Try
+
+            '--------------
+            Dim itemCount1 As Integer = lvRic.Items.Count 'listview column count
+            Dim flag1 As Integer = 0
+
+            'loop thruogh the table rows
+            If itemCount1 <> 1 Then
+
+                For i As Integer = 0 To dgvMain.Rows.Count - 1
+                    If flag1 < itemCount1 Then
+
+                        dgvMain.Rows(i).Cells("Column6").Value = lvRic.Items(flag1).ToString()
+                        flag1 += 1
+                        If flag1 = itemCount1 Then flag1 = 0 ' reset flag if it reaches the end of the ListView
+
+                    End If
+                Next
+
+                'loop thruogh the table rows
+
+                'if there is only one item 
+
+            ElseIf itemCount1 = 1 Then
+
+                For i As Integer = 0 To dgvMain.RowCount - 1
+
+                    dgvMain.Rows(i).Cells("Column6").Value = lvRic.Items(0).ToString()
+                Next
+
+            End If
+
+
+        Catch ex As Exception
+
+        End Try
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

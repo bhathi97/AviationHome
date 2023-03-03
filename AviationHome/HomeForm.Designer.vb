@@ -91,6 +91,7 @@ Partial Class HomeForm
         '
         'dgvMain
         '
+        Me.dgvMain.AllowUserToAddRows = False
         Me.dgvMain.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark
         Me.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvMain.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.noo, Me.fli, Me.Column4, Me.lines, Me.Column6, Me.Column7, Me.Column8, Me.Column9})
