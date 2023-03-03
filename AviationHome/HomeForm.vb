@@ -4,6 +4,11 @@ Imports System.Collections.ObjectModel
 Imports System.Windows.Forms
 Imports System.Windows.Controls
 Imports System.Net.Security
+Imports System.Drawing.Printing
+Imports Control = System.Windows.Forms.Control
+Imports Label = System.Windows.Forms.Label
+Imports System.Data.Common
+Imports System.Windows.Interop
 
 Public Class HomeForm
 
@@ -475,6 +480,104 @@ Public Class HomeForm
             MsgBox(ex.Message)
         End Try
     End Sub
+
+
+    ' print part -----------------
+
+    Dim WithEvents PD As PrintDocument
+    Dim PPD As PrintPreviewDialog
+    Dim langPpr As Integer
+
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+        PD = New PrintDocument()
+        AddHandler PD.BeginPrint, AddressOf PrintAsDocument_BeginPrint
+        AddHandler PD.PrintPage, AddressOf PrintAsDocument_PrintPage
+
+        PPD = New PrintPreviewDialog()
+        PPD.Document = PD
+        PPD.ShowDialog()
+
+    End Sub
+
+    Private Sub PrintAsDocument_BeginPrint(sender As Object, e As PrintEventArgs) Handles PD.BeginPrint
+        Dim pageSetup As New PageSettings
+        pageSetup.PaperSize = New PaperSize("A4", 827, 1169)
+        PD.DefaultPageSettings = pageSetup
+    End Sub
+
+    Private Sub PrintAsDocument_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PD.PrintPage
+
+
+
+
+
+    End Sub
+
+
+
+
+    '------------------------------------
+    'load data to a table
+
+
+    Private Sub btntest_Click(sender As Object, e As EventArgs) Handles btntest.Click
+
+        Try
+
+
+            Dim con As New SqlConnection(str)
+            con.Open()
+            Dim command As New SqlCommand("INSERT INTO [RECORD_TABLE] ([BAY NO], [NO], [FLIGHT], [ETA], [AIRLINES], [RIC], [OPERATOR], [CREWMAN], [REMARKS], [DATE]) VALUES (@Value1, @Value2, @Value3, @Value4, @Value5, @Value6, @Value7, @Value8, @Value9, @Value10)", con)
+            command.Parameters.AddWithValue("@Value1", "")
+            command.Parameters.AddWithValue("@Value2", "")
+            command.Parameters.AddWithValue("@Value3", "")
+            command.Parameters.AddWithValue("@Value4", "")
+            command.Parameters.AddWithValue("@Value5", "")
+            command.Parameters.AddWithValue("@Value6", "")
+            command.Parameters.AddWithValue("@Value7", "")
+            command.Parameters.AddWithValue("@Value8", "")
+            command.Parameters.AddWithValue("@Value9", "")
+            command.Parameters.AddWithValue("@Value10", "")
+            For Each row As DataGridViewRow In dgvMain.Rows
+                command.Parameters("@Value1").Value = If(row.Cells("Column1").Value IsNot Nothing AndAlso Not String.IsNullOrEmpty(row.Cells("Column1").Value.ToString()), row.Cells("Column1").Value.ToString(), "")
+                command.Parameters("@Value2").Value = If(row.Cells("noo").Value IsNot Nothing AndAlso Not String.IsNullOrEmpty(row.Cells("noo").Value.ToString()), row.Cells("noo").Value.ToString(), "")
+                command.Parameters("@Value3").Value = If(row.Cells("fli").Value IsNot Nothing AndAlso Not String.IsNullOrEmpty(row.Cells("fli").Value.ToString()), row.Cells("fli").Value.ToString(), "")
+                command.Parameters("@Value4").Value = If(row.Cells("Column4").Value IsNot Nothing AndAlso Not String.IsNullOrEmpty(row.Cells("Column4").Value.ToString()), row.Cells("Column4").Value.ToString(), "")
+                command.Parameters("@Value5").Value = If(row.Cells("lines").Value IsNot Nothing AndAlso Not String.IsNullOrEmpty(row.Cells("lines").Value.ToString()), row.Cells("lines").Value.ToString(), "")
+                command.Parameters("@Value6").Value = If(row.Cells("Column6").Value IsNot Nothing AndAlso Not String.IsNullOrEmpty(row.Cells("Column6").Value.ToString()), row.Cells("Column6").Value.ToString(), "")
+                command.Parameters("@Value7").Value = If(row.Cells("Column7").Value IsNot Nothing AndAlso Not String.IsNullOrEmpty(row.Cells("Column7").Value.ToString()), row.Cells("Column7").Value.ToString(), "")
+                command.Parameters("@Value8").Value = If(row.Cells("Column8").Value IsNot Nothing AndAlso Not String.IsNullOrEmpty(row.Cells("Column8").Value.ToString()), row.Cells("Column8").Value.ToString(), "")
+                command.Parameters("@Value9").Value = If(row.Cells("Column9").Value IsNot Nothing AndAlso Not String.IsNullOrEmpty(row.Cells("Column9").Value.ToString()), row.Cells("Column9").Value.ToString(), "")
+                command.Parameters("@Value10").Value = tpDate.Text
+
+                command.ExecuteNonQuery()
+            Next
+            con.Close()
+
+            MsgBox("hgftf")
+
+
+        Catch ex As Exception
+
+            MsgBox(ex.Message)
+
+        Finally
+
+
+        End Try
+
+
+
+
+
+
+
+
+    End Sub
+
+
+
+
 
 
 End Class

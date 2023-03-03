@@ -47,6 +47,7 @@ Partial Class HomeForm
         Me.tpDate = New System.Windows.Forms.DateTimePicker()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.btnPrint = New FontAwesome.Sharp.IconButton()
         Me.IconPictureBox1 = New FontAwesome.Sharp.IconPictureBox()
         Me.Panel8 = New System.Windows.Forms.Panel()
         Me.btnRICAddToTable = New FontAwesome.Sharp.IconButton()
@@ -66,14 +67,16 @@ Partial Class HomeForm
         Me.Label9 = New System.Windows.Forms.Label()
         Me.cbGroupPicker = New System.Windows.Forms.ComboBox()
         Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FLIGHT = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PrintAsDocument = New System.Drawing.Printing.PrintDocument()
+        Me.btntest = New System.Windows.Forms.Button()
         CType(Me.dgvMain, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -84,9 +87,9 @@ Partial Class HomeForm
         Me.Panel8.SuspendLayout()
         Me.Panel7.SuspendLayout()
         Me.Panel3.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'dgvMain
@@ -100,7 +103,7 @@ Partial Class HomeForm
         Me.dgvMain.Location = New System.Drawing.Point(5, 5)
         Me.dgvMain.Name = "dgvMain"
         Me.dgvMain.RowTemplate.Height = 25
-        Me.dgvMain.Size = New System.Drawing.Size(905, 537)
+        Me.dgvMain.Size = New System.Drawing.Size(905, 561)
         Me.dgvMain.TabIndex = 0
         '
         'Column1
@@ -180,9 +183,9 @@ Partial Class HomeForm
         Me.Panel4.Controls.Add(Me.Panel5)
         Me.Panel4.Controls.Add(Me.Panel2)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel4.Location = New System.Drawing.Point(0, 81)
+        Me.Panel4.Location = New System.Drawing.Point(0, 57)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(1165, 616)
+        Me.Panel4.Size = New System.Drawing.Size(1165, 640)
         Me.Panel4.TabIndex = 25
         '
         'Panel6
@@ -195,7 +198,7 @@ Partial Class HomeForm
         Me.Panel6.Location = New System.Drawing.Point(0, 65)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel6.Size = New System.Drawing.Size(919, 551)
+        Me.Panel6.Size = New System.Drawing.Size(919, 575)
         Me.Panel6.TabIndex = 34
         '
         'Panel5
@@ -309,6 +312,8 @@ Partial Class HomeForm
         Me.Panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.Panel2.BackColor = System.Drawing.SystemColors.Control
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel2.Controls.Add(Me.btntest)
+        Me.Panel2.Controls.Add(Me.btnPrint)
         Me.Panel2.Controls.Add(Me.IconPictureBox1)
         Me.Panel2.Controls.Add(Me.Panel8)
         Me.Panel2.Controls.Add(Me.Panel7)
@@ -319,8 +324,20 @@ Partial Class HomeForm
         Me.Panel2.Location = New System.Drawing.Point(919, 0)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel2.Size = New System.Drawing.Size(246, 616)
+        Me.Panel2.Size = New System.Drawing.Size(246, 640)
         Me.Panel2.TabIndex = 32
+        '
+        'btnPrint
+        '
+        Me.btnPrint.IconChar = FontAwesome.Sharp.IconChar.Print
+        Me.btnPrint.IconColor = System.Drawing.Color.Black
+        Me.btnPrint.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.btnPrint.IconSize = 20
+        Me.btnPrint.Location = New System.Drawing.Point(102, 544)
+        Me.btnPrint.Name = "btnPrint"
+        Me.btnPrint.Size = New System.Drawing.Size(44, 36)
+        Me.btnPrint.TabIndex = 20
+        Me.btnPrint.UseVisualStyleBackColor = True
         '
         'IconPictureBox1
         '
@@ -555,47 +572,40 @@ Partial Class HomeForm
         '
         Me.Panel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.Panel3.BackColor = System.Drawing.SystemColors.Control
-        Me.Panel3.Controls.Add(Me.PictureBox2)
-        Me.Panel3.Controls.Add(Me.Label6)
-        Me.Panel3.Controls.Add(Me.PictureBox3)
-        Me.Panel3.Controls.Add(Me.PictureBox1)
         Me.Panel3.Controls.Add(Me.Label5)
+        Me.Panel3.Controls.Add(Me.Label6)
+        Me.Panel3.Controls.Add(Me.PictureBox1)
+        Me.Panel3.Controls.Add(Me.PictureBox3)
+        Me.Panel3.Controls.Add(Me.PictureBox2)
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1165, 81)
+        Me.Panel3.Size = New System.Drawing.Size(1165, 57)
         Me.Panel3.TabIndex = 24
         '
-        'PictureBox2
+        'Label5
         '
-        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(946, 12)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(121, 55)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox2.TabIndex = 28
-        Me.PictureBox2.TabStop = False
+        Me.Label5.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label5.AutoSize = True
+        Me.Label5.Font = New System.Drawing.Font("Times New Roman", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label5.Location = New System.Drawing.Point(329, 8)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(589, 23)
+        Me.Label5.TabIndex = 22
+        Me.Label5.Text = "CEYLON PETROLEUM CORPORATION - AVIATION FUNCTION"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Times New Roman", 12.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point)
-        Me.Label6.Location = New System.Drawing.Point(499, 42)
+        Me.Label6.Location = New System.Drawing.Point(499, 34)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(200, 19)
         Me.Label6.TabIndex = 27
         Me.Label6.Text = "DAILY WORK SCHEDULE"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'PictureBox3
-        '
-        Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
-        Me.PictureBox3.Location = New System.Drawing.Point(201, 13)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(121, 55)
-        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox3.TabIndex = 26
-        Me.PictureBox3.TabStop = False
         '
         'PictureBox1
         '
@@ -607,18 +617,27 @@ Partial Class HomeForm
         Me.PictureBox1.TabIndex = 24
         Me.PictureBox1.TabStop = False
         '
-        'Label5
+        'PictureBox3
         '
-        Me.Label5.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Times New Roman", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label5.Location = New System.Drawing.Point(340, 19)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(589, 23)
-        Me.Label5.TabIndex = 22
-        Me.Label5.Text = "CEYLON PETROLEUM CORPORATION - AVIATION FUNCTION"
+        Me.PictureBox3.Dock = System.Windows.Forms.DockStyle.Left
+        Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
+        Me.PictureBox3.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(121, 57)
+        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox3.TabIndex = 26
+        Me.PictureBox3.TabStop = False
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.Dock = System.Windows.Forms.DockStyle.Right
+        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
+        Me.PictureBox2.Location = New System.Drawing.Point(1044, 0)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(121, 57)
+        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox2.TabIndex = 28
+        Me.PictureBox2.TabStop = False
         '
         'DataGridViewTextBoxColumn1
         '
@@ -634,6 +653,15 @@ Partial Class HomeForm
         '
         Me.FLIGHT.HeaderText = "FLIGHT"
         Me.FLIGHT.Name = "FLIGHT"
+        '
+        'btntest
+        '
+        Me.btntest.Location = New System.Drawing.Point(5, 500)
+        Me.btntest.Name = "btntest"
+        Me.btntest.Size = New System.Drawing.Size(75, 23)
+        Me.btntest.TabIndex = 21
+        Me.btntest.Text = "testingbutton"
+        Me.btntest.UseVisualStyleBackColor = True
         '
         'HomeForm
         '
@@ -658,9 +686,9 @@ Partial Class HomeForm
         Me.Panel7.ResumeLayout(False)
         Me.Panel3.ResumeLayout(False)
         Me.Panel3.PerformLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -717,4 +745,7 @@ Partial Class HomeForm
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column8 As DataGridViewTextBoxColumn
     Friend WithEvents Column9 As DataGridViewTextBoxColumn
+    Friend WithEvents btnPrint As FontAwesome.Sharp.IconButton
+    Friend WithEvents PrintAsDocument As Drawing.Printing.PrintDocument
+    Friend WithEvents btntest As Button
 End Class
