@@ -22,6 +22,8 @@ Partial Class HomeForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(HomeForm))
         Me.dgvMain = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -76,7 +78,6 @@ Partial Class HomeForm
         Me.NO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FLIGHT = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PrintAsDocument = New System.Drawing.Printing.PrintDocument()
-        Me.btntest = New System.Windows.Forms.Button()
         CType(Me.dgvMain, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -96,13 +97,29 @@ Partial Class HomeForm
         '
         Me.dgvMain.AllowUserToAddRows = False
         Me.dgvMain.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvMain.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvMain.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.noo, Me.fli, Me.Column4, Me.lines, Me.Column6, Me.Column7, Me.Column8, Me.Column9})
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvMain.DefaultCellStyle = DataGridViewCellStyle2
         Me.dgvMain.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvMain.GridColor = System.Drawing.SystemColors.ControlLight
         Me.dgvMain.Location = New System.Drawing.Point(5, 5)
         Me.dgvMain.Name = "dgvMain"
-        Me.dgvMain.RowTemplate.Height = 25
+        Me.dgvMain.RowTemplate.Height = 40
         Me.dgvMain.Size = New System.Drawing.Size(905, 561)
         Me.dgvMain.TabIndex = 0
         '
@@ -312,7 +329,6 @@ Partial Class HomeForm
         Me.Panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.Panel2.BackColor = System.Drawing.SystemColors.Control
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel2.Controls.Add(Me.btntest)
         Me.Panel2.Controls.Add(Me.btnPrint)
         Me.Panel2.Controls.Add(Me.IconPictureBox1)
         Me.Panel2.Controls.Add(Me.Panel8)
@@ -619,9 +635,8 @@ Partial Class HomeForm
         '
         'PictureBox3
         '
-        Me.PictureBox3.Dock = System.Windows.Forms.DockStyle.Left
         Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
-        Me.PictureBox3.Location = New System.Drawing.Point(0, 0)
+        Me.PictureBox3.Location = New System.Drawing.Point(200, 0)
         Me.PictureBox3.Name = "PictureBox3"
         Me.PictureBox3.Size = New System.Drawing.Size(121, 57)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -630,9 +645,8 @@ Partial Class HomeForm
         '
         'PictureBox2
         '
-        Me.PictureBox2.Dock = System.Windows.Forms.DockStyle.Right
         Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(1044, 0)
+        Me.PictureBox2.Location = New System.Drawing.Point(924, 0)
         Me.PictureBox2.Name = "PictureBox2"
         Me.PictureBox2.Size = New System.Drawing.Size(121, 57)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -653,15 +667,6 @@ Partial Class HomeForm
         '
         Me.FLIGHT.HeaderText = "FLIGHT"
         Me.FLIGHT.Name = "FLIGHT"
-        '
-        'btntest
-        '
-        Me.btntest.Location = New System.Drawing.Point(5, 500)
-        Me.btntest.Name = "btntest"
-        Me.btntest.Size = New System.Drawing.Size(75, 23)
-        Me.btntest.TabIndex = 21
-        Me.btntest.Text = "testingbutton"
-        Me.btntest.UseVisualStyleBackColor = True
         '
         'HomeForm
         '
@@ -747,5 +752,4 @@ Partial Class HomeForm
     Friend WithEvents Column9 As DataGridViewTextBoxColumn
     Friend WithEvents btnPrint As FontAwesome.Sharp.IconButton
     Friend WithEvents PrintAsDocument As Drawing.Printing.PrintDocument
-    Friend WithEvents btntest As Button
 End Class

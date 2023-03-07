@@ -330,7 +330,7 @@ Public Class HomeForm
                     Dim rowCount As Integer = dgvMain.RowCount
 
                     ' Add a column to the DataGridView control
-                    dgvMain.Columns.Add("Number", "Number")
+                    'dgvMain.Columns.Add("Number", "Number")
 
                     ' Loop through each row in the DataGridView control and add the number to the column
                     For i As Integer = 0 To rowCount - 1
@@ -482,45 +482,11 @@ Public Class HomeForm
     End Sub
 
 
-    ' print part -----------------
 
-    Dim WithEvents PD As PrintDocument
-    Dim PPD As PrintPreviewDialog
-    Dim langPpr As Integer
-
-    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
-        PD = New PrintDocument()
-        AddHandler PD.BeginPrint, AddressOf PrintAsDocument_BeginPrint
-        AddHandler PD.PrintPage, AddressOf PrintAsDocument_PrintPage
-
-        PPD = New PrintPreviewDialog()
-        PPD.Document = PD
-        PPD.ShowDialog()
-
-    End Sub
-
-    Private Sub PrintAsDocument_BeginPrint(sender As Object, e As PrintEventArgs) Handles PD.BeginPrint
-        Dim pageSetup As New PageSettings
-        pageSetup.PaperSize = New PaperSize("A4", 827, 1169)
-        PD.DefaultPageSettings = pageSetup
-    End Sub
-
-    Private Sub PrintAsDocument_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PD.PrintPage
-
-
-
-
-
-    End Sub
-
-
-
-
-    '------------------------------------
     'load data to a table
 
-
-    Private Sub btntest_Click(sender As Object, e As EventArgs) Handles btntest.Click
+    '===================================================================
+    Private Sub btntest_Click(sender As Object, e As EventArgs)
 
         Try
 
@@ -576,8 +542,55 @@ Public Class HomeForm
     End Sub
 
 
+    'load grid data to print
+
+
+    Private Sub btnPrint_Click(sender As Object, e As EventArgs) Handles btnPrint.Click
+
+        Try
+            Dim data As New DataTable()
+            ' Add columns to the DataTable
+            data.Columns.Add("Column1")
+            data.Columns.Add("Column2")
+            data.Columns.Add("Column3")
+            data.Columns.Add("Column4")
+            data.Columns.Add("Column5")
+            data.Columns.Add("Column6")
+            data.Columns.Add("Column7")
+            data.Columns.Add("Column8")
+            data.Columns.Add("Column9")
+
+            ' Add rows to the DataTable and load data into the existing columns of the DataTable
+            For Each row As DataGridViewRow In dgvMain.Rows
+                ' Add a new row to the DataTable
+                Dim newRow As DataRow = data.Rows.Add()
+
+                ' Set the values for each column in the new row
+                newRow("Column1") = row.Cells("Column1").Value
+                newRow("Column2") = row.Cells("noo").Value
+                newRow("Column3") = row.Cells("fli").Value
+                newRow("Column4") = row.Cells("Column4").Value
+                newRow("Column5") = row.Cells("lines").Value
+                newRow("Column6") = row.Cells("Column6").Value
+                newRow("Column7") = row.Cells("Column7").Value
+                newRow("Column8") = row.Cells("Column8").Value
+                newRow("Column9") = row.Cells("Column9").Value
+            Next
+
+            Dim pForm As New PrintForm()
+            pForm.Data = data
+            pForm.Show()
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
 
 
 
 
+
+
+
+
+    End Sub
 End Class
