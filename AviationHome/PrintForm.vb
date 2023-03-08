@@ -1,7 +1,9 @@
-﻿Imports System.DirectoryServices.ActiveDirectory
-Imports System.Windows
+﻿Imports System.Windows
+Imports System.Windows.Controls
+
 
 Public Class PrintForm
+
 
     Public Property Data As DataTable
 
@@ -10,8 +12,6 @@ Public Class PrintForm
         shiftTimeShower.Text = HomeForm.cbShiftTime.Text 'load shift time from home form 
         dayShower.Text = HomeForm.lblForShowingDay.Text 'load day from home form
         shiftShower.Text = HomeForm.lblShiftShowing.Text 'load shift from home form
-
-
 
         ' Load the data from the DataTable into the DataGridView
         dgPrint.AutoGenerateColumns = False
@@ -27,14 +27,31 @@ Public Class PrintForm
         dgPrint.Columns("Column9").DataPropertyName = "Column9"
 
 
-
-
-
-
     End Sub
 
 
+    'Private Sub btnConvert_Click(sender As Object, e As EventArgs) Handles btn.Click
 
+    ' Create a new Excel workbook
+    'Dim excel As New Microsoft.Office.Interop.Excel.Application
+    'Dim workbook As Workbook = excel.Workbooks.Add()
+    'Dim worksheet As Worksheet = workbook.ActiveSheet
+    '
+    ' Populate the worksheet with data from the DataGridView control
+    'Dim row As Integer = 1
+    'For Each dgvRow As DataGridViewRow In dgPrint.Rows
+    'For i As Integer = 0 To dgPrint.Columns.Count - 1
+    '           worksheet.Cells(row, i + 1) = dgvRow.Cells(i).Value
+    'Next
+    '       row += 1
+    'Next
+    '
+    ' Save the workbook
+    'workbook.SaveToFile(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) & "\window.pdf")
+    'workbook.SaveAs("data.xlsx")
+    'excel.Quit()
+    '
+    '   End Sub
 
 
 

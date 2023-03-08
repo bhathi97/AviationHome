@@ -9,6 +9,10 @@ Imports Control = System.Windows.Forms.Control
 Imports Label = System.Windows.Forms.Label
 Imports System.Data.Common
 Imports System.Windows.Interop
+Imports ClosedXML.Excel
+Imports System.Windows
+Imports MessageBox = System.Windows.Forms.MessageBox
+Imports DragEventArgs = System.Windows.Forms.DragEventArgs
 
 Public Class HomeForm
 
@@ -579,6 +583,8 @@ Public Class HomeForm
 
             Dim pForm As New PrintForm()
             pForm.Data = data
+
+
             pForm.Show()
 
         Catch ex As Exception
@@ -591,6 +597,67 @@ Public Class HomeForm
 
 
 
+
+    End Sub
+
+    Private Sub PrintAsDocument_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintAsDocument.PrintPage
+
+    End Sub
+
+    'export as xml
+    Private Sub btnXML_Click(sender As Object, e As EventArgs) Handles btnXML.Click
+        ' Set the filter to allow only Excel files
+        Using sfd As SaveFileDialog = New SaveFileDialog()
+            sfd.Filter = "Excel Workbook|*.xlsx"
+
+            ' Show the SaveFileDialog
+            If sfd.ShowDialog() = Windows.Forms.DialogResult.OK Then
+                ' Create a new instance of the XLWorkbook
+                Dim workbook As XLWorkbook = New XLWorkbook()
+
+                ' Create a new worksheet
+                Dim worksheet As IXLWorksheet = workbook.Worksheets.Add("Sheet1")
+
+                ' Get the columns from the DataGridView and add them to the worksheet
+                For columnIndex As Integer = 0 To dgvMain.Columns.Count - 1
+                    worksheet.Cell(1, columnIndex + 1).Value = dgvMain.Columns(columnIndex).HeaderText
+                Next
+
+                ' Get the rows from the DataGridView and add them to the worksheet
+                For rowIndex As Integer = 0 To dgvMain.Rows.Count - 1
+                    For columnIndex As Integer = 0 To dgvMain.Columns.Count - 1
+                        Dim cellValue As Object = dgvMain.Rows(rowIndex).Cells(columnIndex).Value
+                        Dim cellString As String = ""
+
+                        ' Check the data type of the cell value and convert it to a string
+                        If cellValue Is Nothing Then
+                            cellString = ""
+                        ElseIf TypeOf cellValue Is DBNull Then
+                            cellString = ""
+                        ElseIf TypeOf cellValue Is String Then
+                            cellString = cellValue.ToString()
+                        ElseIf TypeOf cellValue Is Date Then
+                            cellString = CType(cellValue, Date).ToString("yyyy-MM-dd")
+                        ElseIf TypeOf cellValue Is Double Or TypeOf cellValue Is Decimal Then
+                            cellString = String.Format("{0:F2}", cellValue)
+                        ElseIf TypeOf cellValue Is Boolean Then
+                            cellString = If(cellValue, "True", "False")
+                        Else
+                            cellString = cellValue.ToString()
+                        End If
+
+
+                        worksheet.Cell(rowIndex + 2, columnIndex + 1).Value = cellString
+                    Next
+                Next
+
+                ' Save the workbook to the specified file
+                workbook.SaveAs(sfd.FileName.ToString())
+
+                ' Show a message box to inform the user that the export was successful
+                MessageBox.Show("Successfully exported to Excel file", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            End If
+        End Using
 
     End Sub
 End Class

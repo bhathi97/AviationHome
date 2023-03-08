@@ -24,17 +24,9 @@ Partial Class HomeForm
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(HomeForm))
         Me.dgvMain = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.noo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.fli = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.lines = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cbShiftTime = New System.Windows.Forms.ComboBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
@@ -49,6 +41,7 @@ Partial Class HomeForm
         Me.tpDate = New System.Windows.Forms.DateTimePicker()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.btnXML = New FontAwesome.Sharp.IconButton()
         Me.btnPrint = New FontAwesome.Sharp.IconButton()
         Me.IconPictureBox1 = New FontAwesome.Sharp.IconPictureBox()
         Me.Panel8 = New System.Windows.Forms.Panel()
@@ -78,6 +71,16 @@ Partial Class HomeForm
         Me.NO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FLIGHT = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PrintAsDocument = New System.Drawing.Printing.PrintDocument()
+        Me.PrintPreviewDialog = New System.Windows.Forms.PrintPreviewDialog()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.noo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fli = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lines = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgvMain, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -95,19 +98,20 @@ Partial Class HomeForm
         '
         'dgvMain
         '
+        Me.dgvMain.AllowDrop = True
         Me.dgvMain.AllowUserToAddRows = False
         Me.dgvMain.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvMain.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.dgvMain.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.noo, Me.fli, Me.Column4, Me.lines, Me.Column6, Me.Column7, Me.Column8, Me.Column9})
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
@@ -119,56 +123,18 @@ Partial Class HomeForm
         Me.dgvMain.GridColor = System.Drawing.SystemColors.ControlLight
         Me.dgvMain.Location = New System.Drawing.Point(5, 5)
         Me.dgvMain.Name = "dgvMain"
-        Me.dgvMain.RowTemplate.Height = 40
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgvMain.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        Me.dgvMain.RowHeadersWidth = 20
+        Me.dgvMain.RowTemplate.Height = 20
         Me.dgvMain.Size = New System.Drawing.Size(905, 561)
         Me.dgvMain.TabIndex = 0
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "BAY NO"
-        Me.Column1.Name = "Column1"
-        '
-        'noo
-        '
-        Me.noo.HeaderText = "NO"
-        Me.noo.Name = "noo"
-        '
-        'fli
-        '
-        Me.fli.HeaderText = "FLIGHT"
-        Me.fli.Name = "fli"
-        Me.fli.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "ETA"
-        Me.Column4.Name = "Column4"
-        '
-        'lines
-        '
-        Me.lines.HeaderText = "AIRLINES"
-        Me.lines.Name = "lines"
-        '
-        'Column6
-        '
-        Me.Column6.HeaderText = "RIC"
-        Me.Column6.Name = "Column6"
-        '
-        'Column7
-        '
-        Me.Column7.HeaderText = "OPERATOR"
-        Me.Column7.Name = "Column7"
-        '
-        'Column8
-        '
-        Me.Column8.HeaderText = "CREWMAN"
-        Me.Column8.Name = "Column8"
-        '
-        'Column9
-        '
-        Me.Column9.HeaderText = "REMARKS"
-        Me.Column9.Name = "Column9"
-        Me.Column9.Width = 200
         '
         'cbShiftTime
         '
@@ -329,6 +295,7 @@ Partial Class HomeForm
         Me.Panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.Panel2.BackColor = System.Drawing.SystemColors.Control
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
+        Me.Panel2.Controls.Add(Me.btnXML)
         Me.Panel2.Controls.Add(Me.btnPrint)
         Me.Panel2.Controls.Add(Me.IconPictureBox1)
         Me.Panel2.Controls.Add(Me.Panel8)
@@ -343,15 +310,27 @@ Partial Class HomeForm
         Me.Panel2.Size = New System.Drawing.Size(246, 640)
         Me.Panel2.TabIndex = 32
         '
+        'btnXML
+        '
+        Me.btnXML.IconChar = FontAwesome.Sharp.IconChar.FileExcel
+        Me.btnXML.IconColor = System.Drawing.Color.Black
+        Me.btnXML.IconFont = FontAwesome.Sharp.IconFont.Solid
+        Me.btnXML.IconSize = 30
+        Me.btnXML.Location = New System.Drawing.Point(27, 571)
+        Me.btnXML.Name = "btnXML"
+        Me.btnXML.Size = New System.Drawing.Size(40, 40)
+        Me.btnXML.TabIndex = 21
+        Me.btnXML.UseVisualStyleBackColor = True
+        '
         'btnPrint
         '
         Me.btnPrint.IconChar = FontAwesome.Sharp.IconChar.Print
         Me.btnPrint.IconColor = System.Drawing.Color.Black
         Me.btnPrint.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.btnPrint.IconSize = 20
-        Me.btnPrint.Location = New System.Drawing.Point(102, 544)
+        Me.btnPrint.IconSize = 30
+        Me.btnPrint.Location = New System.Drawing.Point(27, 513)
         Me.btnPrint.Name = "btnPrint"
-        Me.btnPrint.Size = New System.Drawing.Size(44, 36)
+        Me.btnPrint.Size = New System.Drawing.Size(40, 40)
         Me.btnPrint.TabIndex = 20
         Me.btnPrint.UseVisualStyleBackColor = True
         '
@@ -668,6 +647,68 @@ Partial Class HomeForm
         Me.FLIGHT.HeaderText = "FLIGHT"
         Me.FLIGHT.Name = "FLIGHT"
         '
+        'PrintAsDocument
+        '
+        '
+        'PrintPreviewDialog
+        '
+        Me.PrintPreviewDialog.AutoScrollMargin = New System.Drawing.Size(0, 0)
+        Me.PrintPreviewDialog.AutoScrollMinSize = New System.Drawing.Size(0, 0)
+        Me.PrintPreviewDialog.ClientSize = New System.Drawing.Size(400, 300)
+        Me.PrintPreviewDialog.Document = Me.PrintAsDocument
+        Me.PrintPreviewDialog.Enabled = True
+        Me.PrintPreviewDialog.Icon = CType(resources.GetObject("PrintPreviewDialog.Icon"), System.Drawing.Icon)
+        Me.PrintPreviewDialog.Name = "PrintPreviewDialog"
+        Me.PrintPreviewDialog.Visible = False
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "BAY NO"
+        Me.Column1.Name = "Column1"
+        '
+        'noo
+        '
+        Me.noo.HeaderText = "NO"
+        Me.noo.Name = "noo"
+        '
+        'fli
+        '
+        Me.fli.HeaderText = "FLIGHT"
+        Me.fli.Name = "fli"
+        Me.fli.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "ETA"
+        Me.Column4.Name = "Column4"
+        '
+        'lines
+        '
+        Me.lines.HeaderText = "AIRLINES"
+        Me.lines.Name = "lines"
+        Me.lines.Width = 120
+        '
+        'Column6
+        '
+        Me.Column6.HeaderText = "RIC"
+        Me.Column6.Name = "Column6"
+        '
+        'Column7
+        '
+        Me.Column7.HeaderText = "OPERATOR"
+        Me.Column7.Name = "Column7"
+        '
+        'Column8
+        '
+        Me.Column8.HeaderText = "CREWMAN"
+        Me.Column8.Name = "Column8"
+        '
+        'Column9
+        '
+        Me.Column9.HeaderText = "REMARKS"
+        Me.Column9.Name = "Column9"
+        Me.Column9.Width = 205
+        '
         'HomeForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -741,6 +782,10 @@ Partial Class HomeForm
     Friend WithEvents NO As DataGridViewTextBoxColumn
     Friend WithEvents FLIGHT As DataGridViewTextBoxColumn
     Friend WithEvents dgvMain As DataGridView
+    Friend WithEvents btnPrint As FontAwesome.Sharp.IconButton
+    Friend WithEvents PrintAsDocument As Drawing.Printing.PrintDocument
+    Friend WithEvents PrintPreviewDialog As PrintPreviewDialog
+    Friend WithEvents btnXML As FontAwesome.Sharp.IconButton
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents noo As DataGridViewTextBoxColumn
     Friend WithEvents fli As DataGridViewTextBoxColumn
@@ -750,6 +795,4 @@ Partial Class HomeForm
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column8 As DataGridViewTextBoxColumn
     Friend WithEvents Column9 As DataGridViewTextBoxColumn
-    Friend WithEvents btnPrint As FontAwesome.Sharp.IconButton
-    Friend WithEvents PrintAsDocument As Drawing.Printing.PrintDocument
 End Class

@@ -25,3 +25,9 @@ C:\Users\bhath\source\repos\AviationHome\AviationHome\bin\Debug\net6.0-windows\r
 C:\Users\bhath\source\repos\AviationHome\AviationHome\obj\Debug\net6.0-windows\AviationHome.vbproj.CopyComplete
 C:\Users\bhath\source\repos\AviationHome\AviationHome\obj\Debug\net6.0-windows\AviationHome.Resources.resources
 C:\Users\bhath\source\repos\AviationHome\AviationHome\obj\Debug\net6.0-windows\AviationHome.PrintForm.resources
+C:\Users\bhath\source\repos\AviationHome\AviationHome\bin\Debug\net6.0-windows\ClosedXML.dll
+C:\Users\bhath\source\repos\AviationHome\AviationHome\bin\Debug\net6.0-windows\DocumentFormat.OpenXml.dll
+C:\Users\bhath\source\repos\AviationHome\AviationHome\bin\Debug\net6.0-windows\ExcelNumberFormat.dll
+C:\Users\bhath\source\repos\AviationHome\AviationHome\bin\Debug\net6.0-windows\Irony.dll
+C:\Users\bhath\source\repos\AviationHome\AviationHome\bin\Debug\net6.0-windows\SixLabors.Fonts.dll
+C:\Users\bhath\source\repos\AviationHome\AviationHome\bin\Debug\net6.0-windows\XLParser.dll
