@@ -14,6 +14,9 @@ Imports System.Windows
 Imports MessageBox = System.Windows.Forms.MessageBox
 Imports DragEventArgs = System.Windows.Forms.DragEventArgs
 
+
+
+
 Public Class HomeForm
 
     'connection string
@@ -195,9 +198,6 @@ Public Class HomeForm
     Private Sub btnRICAddToTable_Click(sender As Object, e As EventArgs) Handles btnRICAddToTable.Click
 
 
-
-
-
         Try
 
             '--------------
@@ -334,21 +334,12 @@ Public Class HomeForm
                     Dim rowCount As Integer = dgvMain.RowCount
 
                     ' Add a column to the DataGridView control
-                    'dgvMain.Columns.Add("Number", "Number")
+                    'dgvMain.Columns.Add("noo", "Number")
 
                     ' Loop through each row in the DataGridView control and add the number to the column
                     For i As Integer = 0 To rowCount - 1
                         dgvMain.Rows(i).Cells("noo").Value = i + 1
                     Next
-
-
-
-
-
-
-
-
-
 
 
 
@@ -660,4 +651,11 @@ Public Class HomeForm
         End Using
 
     End Sub
+
+
+
+
+
+
+
 End Class

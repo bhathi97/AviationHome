@@ -31,3 +31,8 @@ C:\Users\bhath\source\repos\AviationHome\AviationHome\bin\Debug\net6.0-windows\E
 C:\Users\bhath\source\repos\AviationHome\AviationHome\bin\Debug\net6.0-windows\Irony.dll
 C:\Users\bhath\source\repos\AviationHome\AviationHome\bin\Debug\net6.0-windows\SixLabors.Fonts.dll
 C:\Users\bhath\source\repos\AviationHome\AviationHome\bin\Debug\net6.0-windows\XLParser.dll
+C:\Users\bhath\source\repos\AviationHome\AviationHome\bin\Debug\net6.0-windows\PdfSharpCore.dll
+C:\Users\bhath\source\repos\AviationHome\AviationHome\bin\Debug\net6.0-windows\ICSharpCode.SharpZipLib.dll
+C:\Users\bhath\source\repos\AviationHome\AviationHome\bin\Debug\net6.0-windows\SixLabors.ImageSharp.dll
+C:\Users\bhath\source\repos\AviationHome\AviationHome\bin\Debug\net6.0-windows\de\PdfSharpCore.resources.dll
+C:\Users\bhath\source\repos\AviationHome\AviationHome\bin\Debug\net6.0-windows\logo\logo.png

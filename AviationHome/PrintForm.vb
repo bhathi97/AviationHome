@@ -1,5 +1,21 @@
 ﻿Imports System.Windows
 Imports System.Windows.Controls
+Imports PdfSharpCore.Drawing
+Imports PdfSharpCore.Pdf
+Imports System.Drawing
+
+
+
+'-------------------
+
+Imports PdfSharpCore
+Imports System.IO
+Imports System.Drawing.Imaging
+
+
+
+'-------------------
+
 
 
 Public Class PrintForm
@@ -30,28 +46,85 @@ Public Class PrintForm
     End Sub
 
 
-    'Private Sub btnConvert_Click(sender As Object, e As EventArgs) Handles btn.Click
 
-    ' Create a new Excel workbook
-    'Dim excel As New Microsoft.Office.Interop.Excel.Application
-    'Dim workbook As Workbook = excel.Workbooks.Add()
-    'Dim worksheet As Worksheet = workbook.ActiveSheet
-    '
-    ' Populate the worksheet with data from the DataGridView control
-    'Dim row As Integer = 1
-    'For Each dgvRow As DataGridViewRow In dgPrint.Rows
-    'For i As Integer = 0 To dgPrint.Columns.Count - 1
-    '           worksheet.Cells(row, i + 1) = dgvRow.Cells(i).Value
-    'Next
-    '       row += 1
-    'Next
-    '
-    ' Save the workbook
-    'workbook.SaveToFile(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) & "\window.pdf")
-    'workbook.SaveAs("data.xlsx")
-    'excel.Quit()
-    '
-    '   End Sub
+    Private Sub btnPdf_Click(sender As Object, e As EventArgs) Handles btnPdf.Click
+
+        CreatePDF()
+
+    End Sub
+
+
+
+    Public Sub CreatePDF()
+        ' Create a new PDF document
+        Dim document As New PdfDocument()
+
+        ' Add a new page to the document
+        Dim page As PdfPage = document.AddPage()
+
+        ' Set the page size to A4
+        page.Width = XUnit.FromMillimeter(210)
+        page.Height = XUnit.FromMillimeter(297)
+
+        ' Create a PDF graphics object to draw on the page
+        Dim gfx As XGraphics = XGraphics.FromPdfPage(page)
+
+        ' Add some text to the page
+        Dim font As New XFont("Times New Roman", 16.5)
+        gfx.DrawString("CEYLON PETROLEUM CORPORATION - AVIATION FUNCTION", font, XBrushes.Black, New XRect(45, 10, page.Width.Point - 100, 50), XStringFormats.Center)
+
+        Dim font1 As New XFont("Times New Roman", 14, XFontStyle.Bold Or XFontStyle.Underline)
+        gfx.DrawString("DAILY WORK SCHEDULE", font1, XBrushes.Black, New XRect(55, 32, page.Width.Point - 100, 50), XStringFormats.Center)
+
+        ' Get the image from the picture box
+        Dim image As System.Drawing.Image = PictureBox2.Image
+
+        ' Convert the image to a byte array
+        Dim ms As New MemoryStream()
+        image.Save(ms, image.RawFormat)
+        Dim imageBytes() As Byte = ms.ToArray()
+
+        ' Create a new XImage object from the byte array
+        Dim xImage As XImage = XImage.FromStream(Function() New MemoryStream(imageBytes))
+
+        ' Draw the image on the page
+        gfx.DrawImage(xImage, New XRect(10, 40, 100, 50))
+        gfx.DrawImage(xImage, New XRect(480, 40, 100, 50))
+
+
+
+        '------------
+        ' Draw the dateShower label text on the page
+        Dim fontLbl As New XFont("Times New Roman", 13)
+
+        Dim dateText As String = "Date:           " + dateShower.Text '  Label control data of date
+        gfx.DrawString(dateText, fontLbl, XBrushes.Black, New XRect(100, 85, page.Width.Point - 20, 50), XStringFormats.TopLeft)
+
+
+        Dim shiftTimeText As String = "Shift Time: " + shiftTimeShower.Text '  Label control of shift time 
+        gfx.DrawString(shiftTimeText, fontLbl, XBrushes.Black, New XRect(100, 100, page.Width.Point - 20, 50), XStringFormats.TopLeft)
+
+        Dim dayText As String = "Day:  " + dayShower.Text '  Label control of day 
+        gfx.DrawString(dayText, fontLbl, XBrushes.Black, New XRect(400, 85, page.Width.Point - 20, 50), XStringFormats.TopLeft)
+
+        Dim shiftText As String = "Shift: " + shiftShower.Text '  Label control of day 
+        gfx.DrawString(shiftText, fontLbl, XBrushes.Black, New XRect(400, 100, page.Width.Point - 20, 50), XStringFormats.TopLeft)
+
+
+
+
+
+
+        ' Save the document to the desktop
+        Dim desktopFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
+        Dim filename As String = desktopFolder + "\test.pdf"
+        document.Save(filename)
+
+
+        MsgBox("dffeefeg")
+    End Sub
+
+
 
 
 
