@@ -108,7 +108,7 @@ Public Class PrintForm
         gfx.DrawString(dayText, fontLbl, XBrushes.Black, New XRect(400, 75, page.Width.Point - 20, 50), XStringFormats.TopLeft)
 
         Dim shiftText As String = "Shift: " + shiftShower.Text '  Label control of day 
-        gfx.DrawString(shiftText, fontLbl, XBrushes.Black, New XRect(400, 900, page.Width.Point - 20, 50), XStringFormats.TopLeft)
+        gfx.DrawString(shiftText, fontLbl, XBrushes.Black, New XRect(400, 90, page.Width.Point - 20, 50), XStringFormats.TopLeft)
 
 
         'draw datagridview----------------------------------
@@ -234,9 +234,6 @@ Public Class PrintForm
 
             ' ... repeat for all table columns
         Next
-
-
-
 
         ' Save the document to the desktop
         Dim desktopFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
