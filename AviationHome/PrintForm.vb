@@ -98,19 +98,142 @@ Public Class PrintForm
         Dim fontLbl As New XFont("Times New Roman", 13)
 
         Dim dateText As String = "Date:           " + dateShower.Text '  Label control data of date
-        gfx.DrawString(dateText, fontLbl, XBrushes.Black, New XRect(100, 85, page.Width.Point - 20, 50), XStringFormats.TopLeft)
+        gfx.DrawString(dateText, fontLbl, XBrushes.Black, New XRect(100, 75, page.Width.Point - 20, 50), XStringFormats.TopLeft)
 
 
         Dim shiftTimeText As String = "Shift Time: " + shiftTimeShower.Text '  Label control of shift time 
-        gfx.DrawString(shiftTimeText, fontLbl, XBrushes.Black, New XRect(100, 100, page.Width.Point - 20, 50), XStringFormats.TopLeft)
+        gfx.DrawString(shiftTimeText, fontLbl, XBrushes.Black, New XRect(100, 90, page.Width.Point - 20, 50), XStringFormats.TopLeft)
 
         Dim dayText As String = "Day:  " + dayShower.Text '  Label control of day 
-        gfx.DrawString(dayText, fontLbl, XBrushes.Black, New XRect(400, 85, page.Width.Point - 20, 50), XStringFormats.TopLeft)
+        gfx.DrawString(dayText, fontLbl, XBrushes.Black, New XRect(400, 75, page.Width.Point - 20, 50), XStringFormats.TopLeft)
 
         Dim shiftText As String = "Shift: " + shiftShower.Text '  Label control of day 
-        gfx.DrawString(shiftText, fontLbl, XBrushes.Black, New XRect(400, 100, page.Width.Point - 20, 50), XStringFormats.TopLeft)
+        gfx.DrawString(shiftText, fontLbl, XBrushes.Black, New XRect(400, 900, page.Width.Point - 20, 50), XStringFormats.TopLeft)
 
 
+        'draw datagridview----------------------------------
+        ' Define the table layout
+        Dim tableWidth As Double = 570
+        Dim columnWidths As Double() = {50, 30, 70, 60, 80, 70, 70, 70, 70}
+        Dim rowHeight As Double = 40
+        Dim tableTop As Double = 110
+
+
+        ' Draw the table header
+        Dim tableHeaderFont As New XFont("Times New Roman", 12, XFontStyle.Bold)
+        Dim tableHeaderPen As New XPen(XColors.Black, 1) ' Set the border color and width
+        Dim tableHeaderRect As XRect
+
+
+        ' Draw the header cells and their borders
+        tableHeaderRect = New XRect(10, tableTop, 50, rowHeight)
+        gfx.DrawRectangle(tableHeaderPen, tableHeaderRect)
+        gfx.DrawString("BAY NO", tableHeaderFont, XBrushes.Black, tableHeaderRect, XStringFormats.Center)
+
+        tableHeaderRect = New XRect(10 + 50, tableTop, 30, rowHeight)
+        gfx.DrawRectangle(tableHeaderPen, tableHeaderRect)
+        gfx.DrawString("NO", tableHeaderFont, XBrushes.Black, tableHeaderRect, XStringFormats.Center)
+
+        tableHeaderRect = New XRect(10 + 80, tableTop, 70, rowHeight)
+        gfx.DrawRectangle(tableHeaderPen, tableHeaderRect)
+        gfx.DrawString("FLIGHT", tableHeaderFont, XBrushes.Black, tableHeaderRect, XStringFormats.Center)
+
+        tableHeaderRect = New XRect(10 + 150, tableTop, 60, rowHeight)
+        gfx.DrawRectangle(tableHeaderPen, tableHeaderRect)
+        gfx.DrawString("ETA", tableHeaderFont, XBrushes.Black, tableHeaderRect, XStringFormats.Center)
+
+        tableHeaderRect = New XRect(10 + 210, tableTop, 80, rowHeight)
+        gfx.DrawRectangle(tableHeaderPen, tableHeaderRect)
+        gfx.DrawString("AIRLINES", tableHeaderFont, XBrushes.Black, tableHeaderRect, XStringFormats.Center)
+
+        tableHeaderRect = New XRect(10 + 290, tableTop, 70, rowHeight)
+        gfx.DrawRectangle(tableHeaderPen, tableHeaderRect)
+        gfx.DrawString("RIC", tableHeaderFont, XBrushes.Black, tableHeaderRect, XStringFormats.Center)
+
+        tableHeaderRect = New XRect(10 + 360, tableTop, 70, rowHeight)
+        gfx.DrawRectangle(tableHeaderPen, tableHeaderRect)
+        gfx.DrawString("OPERATOR", tableHeaderFont, XBrushes.Black, tableHeaderRect, XStringFormats.Center)
+
+        tableHeaderRect = New XRect(10 + 430, tableTop, 70, rowHeight)
+        gfx.DrawRectangle(tableHeaderPen, tableHeaderRect)
+        gfx.DrawString("CREWMAN", tableHeaderFont, XBrushes.Black, tableHeaderRect, XStringFormats.Center)
+
+        tableHeaderRect = New XRect(10 + 500, tableTop, 70, rowHeight)
+        gfx.DrawRectangle(tableHeaderPen, tableHeaderRect)
+        gfx.DrawString("REMARKS", tableHeaderFont, XBrushes.Black, tableHeaderRect, XStringFormats.Center)
+
+
+
+        ' Repeat for all table columns
+
+
+        ' Draw the table data
+        Dim tableFont As New XFont("Times New Roman", 10)
+        Dim tableLeft As Double = 10
+        Dim tableBottom As Double = tableTop + (16 * rowHeight) ' Only draw first 16 rows
+        Dim currentRow As Integer = 0
+
+
+
+        ' Draw the table border
+        Dim pen As New XPen(XColors.Black, 0.5)
+        Dim x1 As Double = tableLeft
+        Dim x2 As Double = tableLeft + tableWidth
+        Dim y1 As Double = tableTop
+        Dim y2 As Double = tableBottom
+        gfx.DrawLine(pen, x1, y1, x2, y1) ' top border
+        gfx.DrawLine(pen, x1, y2, x2, y2) ' bottom border
+        gfx.DrawLine(pen, x1, y1, x1, y2) ' left border
+        gfx.DrawLine(pen, x2, y1, x2, y2) ' right border
+
+        ' Draw the rows
+        Dim rowPen As New XPen(XColors.Black, 0.2) ' Set the border color and width
+        For i As Integer = 0 To dgPrint.Rows.Count - 1 ' loop through rows including header row
+            If i >= 16 Then Exit For ' Only draw first 16 rows
+
+            Dim y As Double = tableTop + (i + 1) * rowHeight
+            gfx.DrawLine(rowPen, x1, y, x2, y) ' draw horizontal line between rows
+
+            ' Draw the data in the cells
+            Dim cellRect As New XRect(tableLeft, y, 50, rowHeight)
+            gfx.DrawRectangle(rowPen, cellRect)
+            gfx.DrawString(dgPrint.Rows(i).Cells("Column1").Value.ToString(), tableFont, XBrushes.Black, cellRect, XStringFormats.Center)
+
+            cellRect = New XRect(tableLeft + 50, y, 30, rowHeight)
+            gfx.DrawRectangle(rowPen, cellRect)
+            gfx.DrawString(dgPrint.Rows(i).Cells("Column2").Value.ToString(), tableFont, XBrushes.Black, cellRect, XStringFormats.Center)
+
+            cellRect = New XRect(tableLeft + 80, y, 70, rowHeight)
+            gfx.DrawRectangle(rowPen, cellRect)
+            gfx.DrawString(dgPrint.Rows(i).Cells("Column3").Value.ToString(), tableFont, XBrushes.Black, cellRect, XStringFormats.Center)
+
+            cellRect = New XRect(tableLeft + 150, y, 60, rowHeight)
+            gfx.DrawRectangle(rowPen, cellRect)
+            gfx.DrawString(dgPrint.Rows(i).Cells("Column4").Value.ToString(), tableFont, XBrushes.Black, cellRect, XStringFormats.Center)
+
+            cellRect = New XRect(tableLeft + 210, y, 80, rowHeight)
+            gfx.DrawRectangle(rowPen, cellRect)
+            gfx.DrawString(dgPrint.Rows(i).Cells("Column5").Value.ToString(), tableFont, XBrushes.Black, cellRect, XStringFormats.Center)
+
+            cellRect = New XRect(tableLeft + 290, y, 70, rowHeight)
+            gfx.DrawRectangle(rowPen, cellRect)
+            gfx.DrawString(dgPrint.Rows(i).Cells("Column6").Value.ToString(), tableFont, XBrushes.Black, cellRect, XStringFormats.Center)
+
+            cellRect = New XRect(tableLeft + 360, y, 70, rowHeight)
+            gfx.DrawRectangle(rowPen, cellRect)
+            gfx.DrawString(dgPrint.Rows(i).Cells("Column7").Value.ToString(), tableFont, XBrushes.Black, cellRect, XStringFormats.Center)
+
+            cellRect = New XRect(tableLeft + 430, y, 70, rowHeight)
+            gfx.DrawRectangle(rowPen, cellRect)
+            gfx.DrawString(dgPrint.Rows(i).Cells("Column8").Value.ToString(), tableFont, XBrushes.Black, cellRect, XStringFormats.Center)
+
+            cellRect = New XRect(tableLeft + 500, y, 70, rowHeight)
+            gfx.DrawRectangle(rowPen, cellRect)
+            gfx.DrawString(dgPrint.Rows(i).Cells("Column9").Value.ToString(), tableFont, XBrushes.Black, cellRect, XStringFormats.Center)
+
+
+            ' ... repeat for all table columns
+        Next
 
 
 

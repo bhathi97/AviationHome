@@ -33,12 +33,8 @@ Public Class HomeForm
         cbShiftTime.Items.Add("07.00 - 19.00")
         cbShiftTime.Items.Add("19.00 - 07.00")
 
-
         'load day
         DataTimePickerAllCommands.changeDayLblWhenLoading(Me)
-
-
-
 
     End Sub
 
@@ -126,10 +122,6 @@ Public Class HomeForm
         End Try
 
     End Sub
-
-
-
-
 
 
     'timePicker
@@ -236,20 +228,6 @@ Public Class HomeForm
         End Try
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     End Sub
 
     Private Sub btnAddPlanesToTable_Click(sender As Object, e As EventArgs) Handles btnAddPlanesToTable.Click
@@ -260,7 +238,6 @@ Public Class HomeForm
 
         Dim today As Date
         today = tpDate.Text
-        'MsgBox(today)
 
         Dim con As New SqlConnection(str)
 
@@ -327,15 +304,8 @@ Public Class HomeForm
                     ' Set the DataSource of the DataGridView to the DataTable
                     dgvMain.DataSource = table.DefaultView
 
-
-
-                    '1234567
                     ' Get the row count of the DataGridView control
                     Dim rowCount As Integer = dgvMain.RowCount
-
-                    ' Add a column to the DataGridView control
-                    'dgvMain.Columns.Add("noo", "Number")
-
                     ' Loop through each row in the DataGridView control and add the number to the column
                     For i As Integer = 0 To rowCount - 1
                         dgvMain.Rows(i).Cells("noo").Value = i + 1
@@ -403,22 +373,20 @@ Public Class HomeForm
                     ' Set the DataSource of the DataGridView to the DataTable
                     dgvMain.DataSource = table.DefaultView
 
+                    'get row count
+                    Dim rowCount As Integer = dgvMain.RowCount
+                    ' Loop through each row in the DataGridView control and add the number to the column
+                    For i As Integer = 0 To rowCount - 1
+                        dgvMain.Rows(i).Cells("noo").Value = i + 1
+                    Next
+
 
                 End If
 
             End If
         Catch ex As Exception
-
             MsgBox(ex.Message)
         End Try
-
-
-
-
-
-
-
-
     End Sub
 
     'try to add new row s or delete selected row
@@ -444,6 +412,7 @@ Public Class HomeForm
     Private Sub ContextMenuStrip_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs)
         Try
             Select Case e.ClickedItem.Name
+
                 Case "AddRow"
                     Dim dv As DataView = CType(dgvMain.DataSource, DataView)
                     Dim newRow As DataRowView = dv.AddNew()
@@ -455,9 +424,6 @@ Public Class HomeForm
                     For i As Integer = 0 To dgvMain.Rows.Count - 1
                         dgvMain.Rows(i).Cells("noo").Value = i + 1
                     Next
-
-
-
 
                 Case "DeleteRow"
                     Dim dv As DataView = CType(dgvMain.DataSource, DataView)
@@ -528,12 +494,6 @@ Public Class HomeForm
         End Try
 
 
-
-
-
-
-
-
     End Sub
 
 
@@ -581,12 +541,6 @@ Public Class HomeForm
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-
-
-
-
-
-
 
 
     End Sub
