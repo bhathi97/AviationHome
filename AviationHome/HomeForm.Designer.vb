@@ -27,15 +27,6 @@ Partial Class HomeForm
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(HomeForm))
         Me.dgvMain = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.noo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.fli = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.lines = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cbShiftTime = New System.Windows.Forms.ComboBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel4 = New System.Windows.Forms.Panel()
@@ -79,9 +70,16 @@ Partial Class HomeForm
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NO = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FLIGHT = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PrintAsDocument = New System.Drawing.Printing.PrintDocument()
-        Me.PrintPreviewDialog = New System.Windows.Forms.PrintPreviewDialog()
-        Me.btnPDF = New FontAwesome.Sharp.IconButton()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.noo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fli = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.lines = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dgvMain, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel4.SuspendLayout()
@@ -101,6 +99,7 @@ Partial Class HomeForm
         '
         Me.dgvMain.AllowDrop = True
         Me.dgvMain.AllowUserToAddRows = False
+        Me.dgvMain.AllowUserToResizeColumns = False
         Me.dgvMain.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
@@ -111,7 +110,7 @@ Partial Class HomeForm
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.dgvMain.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.dgvMain.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.noo, Me.fli, Me.Column4, Me.lines, Me.Column6, Me.Column7, Me.Column8, Me.Column9})
+        Me.dgvMain.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.noo, Me.fli, Me.Column10, Me.Column4, Me.lines, Me.Column6, Me.Column7, Me.Column8, Me.Column9})
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
@@ -134,63 +133,15 @@ Partial Class HomeForm
         Me.dgvMain.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.dgvMain.RowHeadersWidth = 20
         Me.dgvMain.RowTemplate.Height = 20
-        Me.dgvMain.Size = New System.Drawing.Size(905, 561)
+        Me.dgvMain.Size = New System.Drawing.Size(905, 552)
         Me.dgvMain.TabIndex = 0
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "BAY NO"
-        Me.Column1.Name = "Column1"
-        '
-        'noo
-        '
-        Me.noo.HeaderText = "NO"
-        Me.noo.Name = "noo"
-        '
-        'fli
-        '
-        Me.fli.HeaderText = "FLIGHT"
-        Me.fli.Name = "fli"
-        Me.fli.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "ETA"
-        Me.Column4.Name = "Column4"
-        '
-        'lines
-        '
-        Me.lines.HeaderText = "AIRLINES"
-        Me.lines.Name = "lines"
-        Me.lines.Width = 120
-        '
-        'Column6
-        '
-        Me.Column6.HeaderText = "RIC"
-        Me.Column6.Name = "Column6"
-        '
-        'Column7
-        '
-        Me.Column7.HeaderText = "OPERATOR"
-        Me.Column7.Name = "Column7"
-        '
-        'Column8
-        '
-        Me.Column8.HeaderText = "CREWMAN"
-        Me.Column8.Name = "Column8"
-        '
-        'Column9
-        '
-        Me.Column9.HeaderText = "REMARKS"
-        Me.Column9.Name = "Column9"
-        Me.Column9.Width = 205
         '
         'cbShiftTime
         '
         Me.cbShiftTime.FormattingEnabled = True
-        Me.cbShiftTime.Location = New System.Drawing.Point(290, 21)
+        Me.cbShiftTime.Location = New System.Drawing.Point(105, 37)
         Me.cbShiftTime.Name = "cbShiftTime"
-        Me.cbShiftTime.Size = New System.Drawing.Size(125, 23)
+        Me.cbShiftTime.Size = New System.Drawing.Size(174, 23)
         Me.cbShiftTime.TabIndex = 26
         '
         'Panel1
@@ -215,9 +166,9 @@ Partial Class HomeForm
         Me.Panel4.Controls.Add(Me.Panel5)
         Me.Panel4.Controls.Add(Me.Panel2)
         Me.Panel4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel4.Location = New System.Drawing.Point(0, 57)
+        Me.Panel4.Location = New System.Drawing.Point(0, 61)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(1165, 640)
+        Me.Panel4.Size = New System.Drawing.Size(1165, 636)
         Me.Panel4.TabIndex = 25
         '
         'Panel6
@@ -227,10 +178,10 @@ Partial Class HomeForm
         Me.Panel6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
         Me.Panel6.Controls.Add(Me.dgvMain)
         Me.Panel6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Panel6.Location = New System.Drawing.Point(0, 65)
+        Me.Panel6.Location = New System.Drawing.Point(0, 70)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel6.Size = New System.Drawing.Size(919, 575)
+        Me.Panel6.Size = New System.Drawing.Size(919, 566)
         Me.Panel6.TabIndex = 34
         '
         'Panel5
@@ -251,43 +202,41 @@ Partial Class HomeForm
         Me.Panel5.Location = New System.Drawing.Point(0, 0)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel5.Size = New System.Drawing.Size(919, 65)
+        Me.Panel5.Size = New System.Drawing.Size(919, 70)
         Me.Panel5.TabIndex = 33
         '
         'btnAddPlanesToTable
         '
-        Me.btnAddPlanesToTable.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.btnAddPlanesToTable.BackColor = System.Drawing.Color.Gainsboro
         Me.btnAddPlanesToTable.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.btnAddPlanesToTable.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnAddPlanesToTable.Dock = System.Windows.Forms.DockStyle.Right
         Me.btnAddPlanesToTable.IconChar = FontAwesome.Sharp.IconChar.PlaneCircleCheck
-        Me.btnAddPlanesToTable.IconColor = System.Drawing.Color.IndianRed
+        Me.btnAddPlanesToTable.IconColor = System.Drawing.Color.Crimson
         Me.btnAddPlanesToTable.IconFont = FontAwesome.Sharp.IconFont.Solid
         Me.btnAddPlanesToTable.IconSize = 30
-        Me.btnAddPlanesToTable.Location = New System.Drawing.Point(859, 5)
+        Me.btnAddPlanesToTable.Location = New System.Drawing.Point(807, 5)
         Me.btnAddPlanesToTable.Margin = New System.Windows.Forms.Padding(10)
         Me.btnAddPlanesToTable.Name = "btnAddPlanesToTable"
         Me.btnAddPlanesToTable.Padding = New System.Windows.Forms.Padding(5)
-        Me.btnAddPlanesToTable.Size = New System.Drawing.Size(51, 51)
+        Me.btnAddPlanesToTable.Size = New System.Drawing.Size(103, 56)
         Me.btnAddPlanesToTable.TabIndex = 31
-        Me.btnAddPlanesToTable.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btnAddPlanesToTable.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
         Me.btnAddPlanesToTable.UseVisualStyleBackColor = False
         '
         'lblShiftShowing
         '
         Me.lblShiftShowing.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.lblShiftShowing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblShiftShowing.Location = New System.Drawing.Point(718, 21)
+        Me.lblShiftShowing.Location = New System.Drawing.Point(466, 37)
         Me.lblShiftShowing.Name = "lblShiftShowing"
-        Me.lblShiftShowing.Size = New System.Drawing.Size(100, 22)
+        Me.lblShiftShowing.Size = New System.Drawing.Size(129, 22)
         Me.lblShiftShowing.TabIndex = 30
         Me.lblShiftShowing.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(682, 25)
+        Me.Label4.Location = New System.Drawing.Point(466, 17)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(31, 15)
         Me.Label4.TabIndex = 29
@@ -297,16 +246,16 @@ Partial Class HomeForm
         '
         Me.lblForShowingDay.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.lblForShowingDay.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.lblForShowingDay.Location = New System.Drawing.Point(508, 21)
+        Me.lblForShowingDay.Location = New System.Drawing.Point(321, 37)
         Me.lblForShowingDay.Name = "lblForShowingDay"
-        Me.lblForShowingDay.Size = New System.Drawing.Size(120, 22)
+        Me.lblForShowingDay.Size = New System.Drawing.Size(129, 22)
         Me.lblForShowingDay.TabIndex = 28
         Me.lblForShowingDay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(476, 25)
+        Me.Label3.Location = New System.Drawing.Point(321, 17)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(27, 15)
         Me.Label3.TabIndex = 27
@@ -315,7 +264,7 @@ Partial Class HomeForm
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(9, 24)
+        Me.Label1.Location = New System.Drawing.Point(39, 11)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(31, 15)
         Me.Label1.TabIndex = 23
@@ -324,16 +273,16 @@ Partial Class HomeForm
         'tpDate
         '
         Me.tpDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.tpDate.Location = New System.Drawing.Point(44, 21)
+        Me.tpDate.Location = New System.Drawing.Point(105, 9)
         Me.tpDate.Name = "tpDate"
-        Me.tpDate.Size = New System.Drawing.Size(129, 23)
+        Me.tpDate.Size = New System.Drawing.Size(174, 23)
         Me.tpDate.TabIndex = 24
         Me.tpDate.Value = New Date(2023, 2, 25, 0, 0, 0, 0)
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(225, 25)
+        Me.Label2.Location = New System.Drawing.Point(39, 40)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(60, 15)
         Me.Label2.TabIndex = 25
@@ -344,7 +293,6 @@ Partial Class HomeForm
         Me.Panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.Panel2.BackColor = System.Drawing.SystemColors.Control
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D
-        Me.Panel2.Controls.Add(Me.btnPDF)
         Me.Panel2.Controls.Add(Me.btnXML)
         Me.Panel2.Controls.Add(Me.btnPrint)
         Me.Panel2.Controls.Add(Me.IconPictureBox1)
@@ -357,39 +305,52 @@ Partial Class HomeForm
         Me.Panel2.Location = New System.Drawing.Point(919, 0)
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Padding = New System.Windows.Forms.Padding(5)
-        Me.Panel2.Size = New System.Drawing.Size(246, 640)
+        Me.Panel2.Size = New System.Drawing.Size(246, 636)
         Me.Panel2.TabIndex = 32
         '
         'btnXML
         '
+        Me.btnXML.BackColor = System.Drawing.Color.Gainsboro
+        Me.btnXML.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btnXML.ForeColor = System.Drawing.Color.DarkBlue
         Me.btnXML.IconChar = FontAwesome.Sharp.IconChar.FileExcel
-        Me.btnXML.IconColor = System.Drawing.Color.Black
-        Me.btnXML.IconFont = FontAwesome.Sharp.IconFont.Solid
-        Me.btnXML.IconSize = 30
+        Me.btnXML.IconColor = System.Drawing.Color.DarkBlue
+        Me.btnXML.IconFont = FontAwesome.Sharp.IconFont.Regular
+        Me.btnXML.IconSize = 25
+        Me.btnXML.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btnXML.Location = New System.Drawing.Point(27, 571)
         Me.btnXML.Name = "btnXML"
-        Me.btnXML.Size = New System.Drawing.Size(40, 40)
+        Me.btnXML.Size = New System.Drawing.Size(190, 40)
         Me.btnXML.TabIndex = 21
-        Me.btnXML.UseVisualStyleBackColor = True
+        Me.btnXML.Text = "Export as Excel"
+        Me.btnXML.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnXML.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnXML.UseVisualStyleBackColor = False
         '
         'btnPrint
         '
-        Me.btnPrint.IconChar = FontAwesome.Sharp.IconChar.Print
-        Me.btnPrint.IconColor = System.Drawing.Color.Black
+        Me.btnPrint.BackColor = System.Drawing.Color.Gainsboro
+        Me.btnPrint.Font = New System.Drawing.Font("Segoe UI", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.btnPrint.ForeColor = System.Drawing.Color.DarkGreen
+        Me.btnPrint.IconChar = FontAwesome.Sharp.IconChar.FilePdf
+        Me.btnPrint.IconColor = System.Drawing.Color.DarkGreen
         Me.btnPrint.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.btnPrint.IconSize = 30
-        Me.btnPrint.Location = New System.Drawing.Point(27, 513)
+        Me.btnPrint.IconSize = 25
+        Me.btnPrint.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnPrint.Location = New System.Drawing.Point(27, 525)
         Me.btnPrint.Name = "btnPrint"
-        Me.btnPrint.Size = New System.Drawing.Size(40, 40)
+        Me.btnPrint.Size = New System.Drawing.Size(190, 40)
         Me.btnPrint.TabIndex = 20
-        Me.btnPrint.UseVisualStyleBackColor = True
+        Me.btnPrint.Text = "Save as PDF"
+        Me.btnPrint.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
+        Me.btnPrint.UseVisualStyleBackColor = False
         '
         'IconPictureBox1
         '
         Me.IconPictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.IconPictureBox1.Flip = FontAwesome.Sharp.FlipOrientation.Horizontal
         Me.IconPictureBox1.ForeColor = System.Drawing.SystemColors.Desktop
-        Me.IconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.SlidersH
+        Me.IconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Sliders
         Me.IconPictureBox1.IconColor = System.Drawing.SystemColors.Desktop
         Me.IconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Solid
         Me.IconPictureBox1.IconSize = 28
@@ -401,6 +362,7 @@ Partial Class HomeForm
         '
         'Panel8
         '
+        Me.Panel8.BackColor = System.Drawing.SystemColors.Control
         Me.Panel8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel8.Controls.Add(Me.btnRICAddToTable)
         Me.Panel8.Controls.Add(Me.btnAddRICBack)
@@ -415,8 +377,11 @@ Partial Class HomeForm
         '
         'btnRICAddToTable
         '
+        Me.btnRICAddToTable.BackColor = System.Drawing.Color.Gainsboro
+        Me.btnRICAddToTable.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnRICAddToTable.ForeColor = System.Drawing.Color.Crimson
         Me.btnRICAddToTable.IconChar = FontAwesome.Sharp.IconChar.UserEdit
-        Me.btnRICAddToTable.IconColor = System.Drawing.Color.Black
+        Me.btnRICAddToTable.IconColor = System.Drawing.Color.Crimson
         Me.btnRICAddToTable.IconFont = FontAwesome.Sharp.IconFont.Solid
         Me.btnRICAddToTable.IconSize = 25
         Me.btnRICAddToTable.Location = New System.Drawing.Point(10, 158)
@@ -426,7 +391,7 @@ Partial Class HomeForm
         Me.btnRICAddToTable.Text = "Duty Assign"
         Me.btnRICAddToTable.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnRICAddToTable.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnRICAddToTable.UseVisualStyleBackColor = True
+        Me.btnRICAddToTable.UseVisualStyleBackColor = False
         '
         'btnAddRICBack
         '
@@ -495,6 +460,7 @@ Partial Class HomeForm
         '
         'Panel7
         '
+        Me.Panel7.BackColor = System.Drawing.SystemColors.Control
         Me.Panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel7.Controls.Add(Me.btnCMAddToTable)
         Me.Panel7.Controls.Add(Me.btnAddCMBack)
@@ -509,8 +475,11 @@ Partial Class HomeForm
         '
         'btnCMAddToTable
         '
+        Me.btnCMAddToTable.BackColor = System.Drawing.Color.Gainsboro
+        Me.btnCMAddToTable.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.btnCMAddToTable.ForeColor = System.Drawing.Color.Crimson
         Me.btnCMAddToTable.IconChar = FontAwesome.Sharp.IconChar.UserEdit
-        Me.btnCMAddToTable.IconColor = System.Drawing.Color.Black
+        Me.btnCMAddToTable.IconColor = System.Drawing.Color.Crimson
         Me.btnCMAddToTable.IconFont = FontAwesome.Sharp.IconFont.Solid
         Me.btnCMAddToTable.IconSize = 25
         Me.btnCMAddToTable.Location = New System.Drawing.Point(10, 158)
@@ -520,7 +489,7 @@ Partial Class HomeForm
         Me.btnCMAddToTable.Text = "Duty Assign"
         Me.btnCMAddToTable.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.btnCMAddToTable.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btnCMAddToTable.UseVisualStyleBackColor = True
+        Me.btnCMAddToTable.UseVisualStyleBackColor = False
         '
         'btnAddCMBack
         '
@@ -625,7 +594,7 @@ Partial Class HomeForm
         Me.Panel3.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel3.Location = New System.Drawing.Point(0, 0)
         Me.Panel3.Name = "Panel3"
-        Me.Panel3.Size = New System.Drawing.Size(1165, 57)
+        Me.Panel3.Size = New System.Drawing.Size(1165, 61)
         Me.Panel3.TabIndex = 24
         '
         'Label5
@@ -697,31 +666,60 @@ Partial Class HomeForm
         Me.FLIGHT.HeaderText = "FLIGHT"
         Me.FLIGHT.Name = "FLIGHT"
         '
-        'PrintAsDocument
+        'Column1
         '
+        Me.Column1.HeaderText = "BAY NO"
+        Me.Column1.Name = "Column1"
         '
-        'PrintPreviewDialog
+        'noo
         '
-        Me.PrintPreviewDialog.AutoScrollMargin = New System.Drawing.Size(0, 0)
-        Me.PrintPreviewDialog.AutoScrollMinSize = New System.Drawing.Size(0, 0)
-        Me.PrintPreviewDialog.ClientSize = New System.Drawing.Size(400, 300)
-        Me.PrintPreviewDialog.Document = Me.PrintAsDocument
-        Me.PrintPreviewDialog.Enabled = True
-        Me.PrintPreviewDialog.Icon = CType(resources.GetObject("PrintPreviewDialog.Icon"), System.Drawing.Icon)
-        Me.PrintPreviewDialog.Name = "PrintPreviewDialog"
-        Me.PrintPreviewDialog.Visible = False
+        Me.noo.HeaderText = "NO"
+        Me.noo.Name = "noo"
+        Me.noo.Width = 50
         '
-        'btnPDF
+        'fli
         '
-        Me.btnPDF.IconChar = FontAwesome.Sharp.IconChar.Twitch
-        Me.btnPDF.IconColor = System.Drawing.Color.Black
-        Me.btnPDF.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.btnPDF.IconSize = 30
-        Me.btnPDF.Location = New System.Drawing.Point(151, 513)
-        Me.btnPDF.Name = "btnPDF"
-        Me.btnPDF.Size = New System.Drawing.Size(50, 66)
-        Me.btnPDF.TabIndex = 22
-        Me.btnPDF.UseVisualStyleBackColor = True
+        Me.fli.HeaderText = "FLIGHT"
+        Me.fli.Name = "fli"
+        Me.fli.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'Column10
+        '
+        Me.Column10.HeaderText = "ROUTE"
+        Me.Column10.Name = "Column10"
+        Me.Column10.Width = 70
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "ETA"
+        Me.Column4.Name = "Column4"
+        '
+        'lines
+        '
+        Me.lines.HeaderText = "AIRLINES"
+        Me.lines.Name = "lines"
+        Me.lines.Width = 120
+        '
+        'Column6
+        '
+        Me.Column6.HeaderText = "RIC"
+        Me.Column6.Name = "Column6"
+        '
+        'Column7
+        '
+        Me.Column7.HeaderText = "OPERATOR"
+        Me.Column7.Name = "Column7"
+        '
+        'Column8
+        '
+        Me.Column8.HeaderText = "CREWMAN"
+        Me.Column8.Name = "Column8"
+        '
+        'Column9
+        '
+        Me.Column9.HeaderText = "REMARKS"
+        Me.Column9.Name = "Column9"
+        Me.Column9.Width = 155
         '
         'HomeForm
         '
@@ -797,17 +795,15 @@ Partial Class HomeForm
     Friend WithEvents FLIGHT As DataGridViewTextBoxColumn
     Friend WithEvents dgvMain As DataGridView
     Friend WithEvents btnPrint As FontAwesome.Sharp.IconButton
-    Friend WithEvents PrintAsDocument As Drawing.Printing.PrintDocument
-    Friend WithEvents PrintPreviewDialog As PrintPreviewDialog
     Friend WithEvents btnXML As FontAwesome.Sharp.IconButton
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents noo As DataGridViewTextBoxColumn
     Friend WithEvents fli As DataGridViewTextBoxColumn
+    Friend WithEvents Column10 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents lines As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column8 As DataGridViewTextBoxColumn
     Friend WithEvents Column9 As DataGridViewTextBoxColumn
-    Friend WithEvents btnPDF As FontAwesome.Sharp.IconButton
 End Class

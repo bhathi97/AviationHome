@@ -387,6 +387,11 @@ Public Class HomeForm
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+
+
+
+
+
     End Sub
 
     'try to add new row s or delete selected row
@@ -514,6 +519,7 @@ Public Class HomeForm
             data.Columns.Add("Column7")
             data.Columns.Add("Column8")
             data.Columns.Add("Column9")
+            data.Columns.Add("Column10")
 
             ' Add rows to the DataTable and load data into the existing columns of the DataTable
             For Each row As DataGridViewRow In dgvMain.Rows
@@ -530,6 +536,7 @@ Public Class HomeForm
                 newRow("Column7") = row.Cells("Column7").Value
                 newRow("Column8") = row.Cells("Column8").Value
                 newRow("Column9") = row.Cells("Column9").Value
+                newRow("Column10") = row.Cells("Column10").Value
             Next
 
             Dim pForm As New PrintForm()
@@ -545,7 +552,7 @@ Public Class HomeForm
 
     End Sub
 
-    Private Sub PrintAsDocument_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintAsDocument.PrintPage
+    Private Sub PrintAsDocument_PrintPage(sender As Object, e As PrintPageEventArgs)
 
     End Sub
 
@@ -605,11 +612,6 @@ Public Class HomeForm
         End Using
 
     End Sub
-
-
-
-
-
 
 
 End Class

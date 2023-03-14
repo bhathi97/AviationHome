@@ -29,9 +29,10 @@ Partial Class PrintForm
         Me.PrintPreviewDialog = New System.Windows.Forms.PrintPreviewDialog()
         Me.PrintDocument = New System.Drawing.Printing.PrintDocument()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.btnPdf = New FontAwesome.Sharp.IconButton()
-        Me.btn = New FontAwesome.Sharp.IconButton()
+        Me.dgPrint = New System.Windows.Forms.DataGridView()
         Me.shiftShower = New System.Windows.Forms.Label()
         Me.dayShower = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -40,23 +41,22 @@ Partial Class PrintForm
         Me.dateShower = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.dgPrint = New System.Windows.Forms.DataGridView()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.PictureBox3 = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgPrint, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PrintPreviewDialog
@@ -82,6 +82,16 @@ Partial Class PrintForm
         Me.Panel1.Size = New System.Drawing.Size(540, 749)
         Me.Panel1.TabIndex = 0
         '
+        'PictureBox3
+        '
+        Me.PictureBox3.Image = Global.AviationHome.My.Resources.Resources.logo
+        Me.PictureBox3.Location = New System.Drawing.Point(428, 34)
+        Me.PictureBox3.Name = "PictureBox3"
+        Me.PictureBox3.Size = New System.Drawing.Size(100, 50)
+        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.PictureBox3.TabIndex = 3
+        Me.PictureBox3.TabStop = False
+        '
         'PictureBox2
         '
         Me.PictureBox2.Image = Global.AviationHome.My.Resources.Resources.logo
@@ -94,25 +104,58 @@ Partial Class PrintForm
         '
         'btnPdf
         '
-        Me.btnPdf.IconChar = FontAwesome.Sharp.IconChar.Suse
+        Me.btnPdf.BackColor = System.Drawing.Color.LimeGreen
+        Me.btnPdf.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnPdf.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnPdf.DialogResult = System.Windows.Forms.DialogResult.OK
+        Me.btnPdf.IconChar = FontAwesome.Sharp.IconChar.Print
         Me.btnPdf.IconColor = System.Drawing.Color.Black
         Me.btnPdf.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.btnPdf.Location = New System.Drawing.Point(339, 658)
+        Me.btnPdf.IconSize = 30
+        Me.btnPdf.Location = New System.Drawing.Point(201, 673)
         Me.btnPdf.Name = "btnPdf"
-        Me.btnPdf.Size = New System.Drawing.Size(75, 49)
+        Me.btnPdf.Size = New System.Drawing.Size(130, 49)
         Me.btnPdf.TabIndex = 0
-        Me.btnPdf.UseVisualStyleBackColor = True
+        Me.btnPdf.UseVisualStyleBackColor = False
         '
-        'btn
+        'dgPrint
         '
-        Me.btn.IconChar = FontAwesome.Sharp.IconChar.Print
-        Me.btn.IconColor = System.Drawing.Color.Black
-        Me.btn.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.btn.Location = New System.Drawing.Point(230, 680)
-        Me.btn.Name = "btn"
-        Me.btn.Size = New System.Drawing.Size(50, 58)
-        Me.btn.TabIndex = 59
-        Me.btn.UseVisualStyleBackColor = True
+        Me.dgPrint.AllowUserToAddRows = False
+        Me.dgPrint.AllowUserToDeleteRows = False
+        Me.dgPrint.BackgroundColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgPrint.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.dgPrint.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgPrint.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column10, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column8, Me.Column9})
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.dgPrint.DefaultCellStyle = DataGridViewCellStyle2
+        Me.dgPrint.Location = New System.Drawing.Point(0, 128)
+        Me.dgPrint.Name = "dgPrint"
+        Me.dgPrint.ReadOnly = True
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dgPrint.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
+        Me.dgPrint.RowHeadersWidth = 5
+        Me.dgPrint.RowTemplate.Height = 20
+        Me.dgPrint.Size = New System.Drawing.Size(540, 517)
+        Me.dgPrint.TabIndex = 53
         '
         'shiftShower
         '
@@ -192,109 +235,6 @@ Partial Class PrintForm
         Me.Label1.TabIndex = 50
         Me.Label1.Text = "DATE  :"
         '
-        'dgPrint
-        '
-        Me.dgPrint.AllowUserToAddRows = False
-        Me.dgPrint.AllowUserToDeleteRows = False
-        Me.dgPrint.BackgroundColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgPrint.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
-        Me.dgPrint.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgPrint.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column8, Me.Column9})
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.dgPrint.DefaultCellStyle = DataGridViewCellStyle2
-        Me.dgPrint.Location = New System.Drawing.Point(0, 128)
-        Me.dgPrint.Name = "dgPrint"
-        Me.dgPrint.ReadOnly = True
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.dgPrint.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
-        Me.dgPrint.RowHeadersWidth = 5
-        Me.dgPrint.RowTemplate.Height = 40
-        Me.dgPrint.Size = New System.Drawing.Size(540, 493)
-        Me.dgPrint.TabIndex = 53
-        '
-        'Column1
-        '
-        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        Me.Column1.HeaderText = "BAY NO"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        Me.Column1.Width = 40
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "NO"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        Me.Column2.Width = 30
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "FLIGHT"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        Me.Column3.Width = 70
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "E.T.A"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        Me.Column4.Width = 50
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "AIRLINES"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        Me.Column5.Width = 60
-        '
-        'Column6
-        '
-        Me.Column6.HeaderText = "RIC"
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
-        Me.Column6.Width = 60
-        '
-        'Column7
-        '
-        Me.Column7.HeaderText = "OPERATOR"
-        Me.Column7.Name = "Column7"
-        Me.Column7.ReadOnly = True
-        Me.Column7.Width = 80
-        '
-        'Column8
-        '
-        Me.Column8.HeaderText = "CREWMAN"
-        Me.Column8.Name = "Column8"
-        Me.Column8.ReadOnly = True
-        Me.Column8.Width = 75
-        '
-        'Column9
-        '
-        Me.Column9.HeaderText = "REMARKS"
-        Me.Column9.Name = "Column9"
-        Me.Column9.ReadOnly = True
-        Me.Column9.Width = 67
-        '
         'Label5
         '
         Me.Label5.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -319,15 +259,76 @@ Partial Class PrintForm
         Me.Label6.Text = "DAILY WORK SCHEDULE"
         Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         '
-        'PictureBox3
+        'Column1
         '
-        Me.PictureBox3.Image = Global.AviationHome.My.Resources.Resources.logo
-        Me.PictureBox3.Location = New System.Drawing.Point(428, 34)
-        Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(100, 50)
-        Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox3.TabIndex = 3
-        Me.PictureBox3.TabStop = False
+        Me.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.Column1.HeaderText = "BAY NO"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        Me.Column1.Width = 40
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "NO"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        Me.Column2.Width = 30
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "FLIGHT"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        Me.Column3.Width = 60
+        '
+        'Column10
+        '
+        Me.Column10.FillWeight = 60.0!
+        Me.Column10.HeaderText = "ROUTE"
+        Me.Column10.Name = "Column10"
+        Me.Column10.ReadOnly = True
+        Me.Column10.Width = 60
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "E.T.A"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        Me.Column4.Width = 50
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = "AIRLINES"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        '
+        'Column6
+        '
+        Me.Column6.HeaderText = "RIC"
+        Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
+        Me.Column6.Width = 55
+        '
+        'Column7
+        '
+        Me.Column7.HeaderText = "OPERATOR"
+        Me.Column7.Name = "Column7"
+        Me.Column7.ReadOnly = True
+        Me.Column7.Width = 70
+        '
+        'Column8
+        '
+        Me.Column8.HeaderText = "CREWMAN"
+        Me.Column8.Name = "Column8"
+        Me.Column8.ReadOnly = True
+        Me.Column8.Width = 70
+        '
+        'Column9
+        '
+        Me.Column9.HeaderText = "REMARKS"
+        Me.Column9.Name = "Column9"
+        Me.Column9.ReadOnly = True
+        Me.Column9.Width = 60
         '
         'PrintForm
         '
@@ -335,7 +336,6 @@ Partial Class PrintForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Window
         Me.ClientSize = New System.Drawing.Size(540, 749)
-        Me.Controls.Add(Me.btn)
         Me.Controls.Add(Me.shiftShower)
         Me.Controls.Add(Me.dayShower)
         Me.Controls.Add(Me.Label4)
@@ -350,9 +350,9 @@ Partial Class PrintForm
         Me.Name = "PrintForm"
         Me.Text = "PrintForm"
         Me.Panel1.ResumeLayout(False)
+        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgPrint, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -361,7 +361,6 @@ Partial Class PrintForm
     Friend WithEvents PrintPreviewDialog As PrintPreviewDialog
     Friend WithEvents PrintDocument As Drawing.Printing.PrintDocument
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents btn As FontAwesome.Sharp.IconButton
     Friend WithEvents shiftShower As Label
     Friend WithEvents dayShower As Label
     Friend WithEvents Label4 As Label
@@ -371,18 +370,19 @@ Partial Class PrintForm
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents dgPrint As DataGridView
+    Friend WithEvents Label5 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents btnPdf As FontAwesome.Sharp.IconButton
+    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column10 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column8 As DataGridViewTextBoxColumn
     Friend WithEvents Column9 As DataGridViewTextBoxColumn
-    Friend WithEvents Label5 As Label
-    Friend WithEvents Label6 As Label
-    Friend WithEvents btnPdf As FontAwesome.Sharp.IconButton
-    Friend WithEvents PictureBox2 As PictureBox
-    Friend WithEvents PictureBox3 As PictureBox
 End Class
